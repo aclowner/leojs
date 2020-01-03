@@ -1,0 +1,12 @@
+<component>
+    <style >
+       
+    </style>
+    <template>
+        <div class="home"><h1>首页{{$route.params.name}}</h1></div>
+    </template>
+    <script>
+    function Home(){
+    }
+    </script>
+</component>

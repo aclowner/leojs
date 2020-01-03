@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>loejs</title>
+    <link rel="icon" href="image/favicon.png" type="image/gif">    
+    <link rel="stylesheet" href="leo/css/leo.css">
+    <link rel="stylesheet" href="style/page.css">
+
+    <script src="leo/js/less.min.js"></script>
+    <script src="leo/js/vue.js"></script>
+    <script src="leo/js/vue-router.min.js"></script>
+</head>
+
+<body>
+
+    <div class="all" id="vue" >
+
+        <div class="left">
+            <div class="logo">
+                <img src="image/logo.png" alt="">
+                <span>namespace + vue</span>
+            </div>
+            <div class="menus">
+                <!-- <div :class="['item',{active:i==menus.active}]" v-for="(item,i) in menus.data" :key="item.Id"><a @click="menus.active=i">{{item.Name}}</a></div> -->
+                <template>
+                <router-link :class="['item',{active:i==active}]" @click.native="active=i"
+                    :to="item.page+'/'+item.Name" v-for="(item,i) in menus">{{item.Name}}</router-link>
+                </template>
+            </div>
+        </div>
+
+        <div class="body">
+            <transition mode="out-in" name="fade">
+                <keep-alive>
+                    <router-view></router-view>
+                </keep-alive>
+            </transition>            
+        </div>
+
+    </div>
+
+    <script src="https://webapi.amap.com/maps?v=1.4.15&key=	8391898f09b9b9f5e0fba9cd6c8ad70b"></script>       
+    <script src="script/d3.v3.js"></script>
+
+    <script src="script/webgl/three.js"></script>
+    <script src="script/webgl/WebGL.js"></script>
+    <script src="script/webgl/FBXLoader.js"></script>
+    <script src="script/webgl/OrbitControls.js"></script>
+    <script src="script/webgl/stats.min.js"></script>
+    <script src="script/webgl/inflate.min.js"></script>
+
+    <script src="leo/js/Namespace_2.1.0.js" defer="defer" leo="leo/js/Leo" start="script/index"></script>
+</body>
+
+</html>

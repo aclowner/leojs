@@ -1,0 +1,88 @@
+:root {
+    --color-s:#8876f9;
+    --color-e:#7685f8;
+    --color-bg:#e5e5e5;
+}
+
+
+body{
+    overflow: hidden;
+}
+.all{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: stretch;
+    color: #333;
+}
+
+.left{
+    width: 280px;
+    background: linear-gradient(to top right, var(--color-s), var(--color-e));
+}
+.left .logo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+}
+.logo img{
+    width: 80px;
+    height: 80px;
+    margin: 20px 0 10px 0;
+}
+.logo span{
+    font-size: 24px;
+    letter-spacing: 1px; 
+    color: #f3f3f3;   
+}
+
+.menus .item{
+    line-height: 48px;
+    padding: 0 30px;
+    font-size: 16px;
+    border-left: solid 5px transparent;
+    margin: 2px 0;
+    cursor: pointer;
+    color: #fff;
+}
+.menus .item.active{
+    border-left-color: #58bea6;
+    background: rgba(0, 0, 0, 0.1);
+}
+.menus .item:hover{
+    background: rgba(0, 0, 0, 0.1);
+}
+.menus a{
+    display: block;
+}
+
+.body{
+    flex: 1;
+    background: var(--color-bg);
+    padding: 0 20px 25px 20px;    
+}
+
+.page{
+    height: 100%;
+}
+.page .title{
+    height: 100px;
+    font-size: 24px;
+    color: #555;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+}
+.page .title .ope{
+    margin-top: 20px;
+}
+.page .con{
+    flex: 1;
+    overflow: hidden;
+}
+.box{
+    background: #fff;
+    border-radius: 5px;
+}
+

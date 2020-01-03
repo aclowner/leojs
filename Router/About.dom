@@ -1,0 +1,12 @@
+<component>
+    <style></style>
+    <template>
+        <div><h1>关于{{$route.params.name}}</h1></div>
+    </template>
+    <script>
+    // Vue.component("about", new About());
+    function About(){
+        // this.template = $template;
+    }
+    </script>
+</component>
