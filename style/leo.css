@@ -358,7 +358,7 @@ a.radio.checked:before{
 }
 
 .sel-input.date i{
-    background: url("date.png");
+    background: url("../image/date.png");
 }
 /* checkbox, radio, input, select ---- end*/
 
@@ -471,7 +471,7 @@ a.radio.checked:before{
     height: 21px;
     top: 9px;
     right: 12px;
-    background: url("../../image/search.png");
+    background: url("../image/search.png");
 }
 
 /* popup */

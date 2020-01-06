@@ -208,7 +208,7 @@
 
             },
             created(){
-                console.log()
+                
             },
             methods:{
                 jobClick(id){

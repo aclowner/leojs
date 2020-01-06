@@ -20,19 +20,19 @@
             </row>
             <row name="部门"><input type="text" @click="dept" v-model="data.Dept"></row>
             <row name="职务"><leo-select :value.sync="data.JobId" :list="jobs"></leo-select></row>
-            <row name="Email"><input type="text" v-model="data.Mail"></row>
+           
             <row class="form-btn"><button class="btn blue" @click="save">确定</button>&nbsp;&nbsp;<button @click="close" class="btn" >取消</button></row>   
         </div>
     </template>
     <script>
     
-    NS.Component("../components/select");
+    NS.Component(["../components/select","../components/date"]);
     function userAdd(){
         Object.assign(this,{
             name:"user-add",
             data(){
                 return {
-                    data:{Id:"",Tel:"",Name:"",Sex:1,Account:"",Pwd:"",Dept:"",DeptId:"",Job:"",JobId:"",Mail:""},
+                    data:{Id:"",Tel:"",Name:"",Sex:1,Account:"",Pwd:"",Dept:"",DeptId:"",Job:"",JobId:""},
                     jobs:[{Id:1,Name:"职务一"},{Id:2,Name:"职务二"},{Id:3,Name:"职务三"}],
                     edit:false  //-1 添加  >0 当前编辑数据的索引，用于更新数据                  
                 }

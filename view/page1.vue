@@ -177,6 +177,7 @@ function page1() {
         });
       },
       ppCall(re) {
+        console.log(re);
         if (re.fn == "userSave") {
           //添加编辑用户
           if (re.data.Id) {

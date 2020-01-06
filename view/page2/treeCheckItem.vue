@@ -87,7 +87,7 @@
                             this.limit = this.item.limit.map((o,i)=>i);
                         else      //清空选择
                             this.limit = [];
-                    }                   
+                    }                 
                     
                     //获取子级组件，返回值位数组                    
                     let child = this.$refs.childItem;                    

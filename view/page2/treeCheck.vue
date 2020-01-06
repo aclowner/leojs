@@ -116,19 +116,10 @@
             },
             data(){
                 return {
-                    checked : this.checks//Object.assign(this.list.treeToList(0,"id","child").map(o=>o.id).toObject(2),this.checks)
+                    checked : Object.assign(this.list.treeToList().map(o=>o.id).toObject(2),this.checks)
                 }
             },
-            created(){
-                console.log(this.checked);
-            },
-            computed:{
-
-            },
             methods:{
-            },
-            mounted(){
-                console.log(this.checked);
             },
             watch:{
                 checked:{                    
@@ -145,7 +136,7 @@
                 checks(nv){
                     console.log(nv);
                     if(this.checkbox)
-                        this.checked = this.checks;
+                        this.checked = Object.assign(this.list.treeToList().map(o=>o.id).toObject(2),nv);
                 }
             }
         });
