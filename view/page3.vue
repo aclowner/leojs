@@ -12,18 +12,90 @@
                 line-height: 22px;
                 color: #fff;
             }
+            .pro-add{
+                padding: 20px 300px 020px 54px;
+            }
+            .ssq{
+                margin: 0 40px;
+            }
         </style>
         <template>
             <div class="page flex-column">
-            <div class="title flex"><span>{{$route.params.title}}</span></div>
+            <div class="title flex">
+                <span>{{$route.params.title}}</span>
+                <div class="ope">
+                    <button v-if="type==2" class="btn green mr" @click="add()">添加项目</button>
+                    <template v-if="type==1"><button class="btn blue mr" @click="save">保存</button><button class="btn" @click="cancle">取消</button></template>
+                </div>
+            </div>
             <div class="con box">
-                <div class="amap" id="amap"></div>
+                <div class="amap" id="amap" v-show="type==2"></div> 
+                <scroll v-show="type==1">
+                    <div class="pro-add">
+                        <row name="项目名称：" class="must"><input type="text" v-model="data.XMMC"></row>
+                        <row name="项目简称：" class="must"><input type="text" v-model="data.XMJC"></row>
+                        <div class="flex">
+                            <div class="col6"><row name="开始日期：" ><leo-date :value="data.KSRQ"></leo-date></row></div>
+                            <div class="col6"><row name="结束日期：" ><leo-date :value="data.JSRQ"></leo-date></row></div>
+                        </div>
+                        <row name="项目负责人：" class="must"><input type="text" v-model="data.XMJC"></row>
+                        <row name="项目所属区域：">
+                            <div class="flex">
+                                <div class="col4 "><leo-select placeholder="省" li-type="5" :list="sss" :value.sync="data.XMSSS" @change="()=>{data.XMSSQ='';data.XMSSX='';}"></leo-select></div>
+                                <div class="col4 ssq"><leo-select placeholder="市" li-type="5" :list="ssq" :value.sync="data.XMSSQ" @change="()=>{data.XMSSX='';}"></leo-select></div>
+                                <div class="col4 "><leo-select placeholder="区县" li-type="5" :list="ssx" :value.sync="data.XMSSX"></leo-select></div>                            
+                            </div>
+                        </row>
+                        <row name="具体地址：">
+                            <input-filter></input-filter>
+                        </row>
+                        <row name="项目描述：">
+                            <textarea v-model="data.XMMS"></textarea>
+                        </row>
+                    </div>                    
+                </scroll>               
             </div>
             </div>
         </template>
         <script>    
+        NS.Component(["components/inputFilter"]);
         function page3(){
             Object.assign(this,{
+                data(){
+                    return {
+                        type:2,
+                        data:{XMMC:"",XMJC:"",KSRQ:"",JSRQ:"",XMSSS:"",XMSSQ:"",XMSSX:""},
+                        sss:[],
+                    }
+                },
+                created(){
+                    this.sss = NS.Load("../resource/city.json")
+                },
+                computed:{
+                    ssq(){
+                        if(!this.data.XMSSS || this.sss.length==0)
+                            return [];
+                        let sssItem = this.sss.find(o=>o.Name==this.data.XMSSS);
+                        return sssItem.City;
+                    },
+                    ssx(){
+                        if(!this.data.XMSSQ || this.ssq.length==0)
+                            return [];
+                        let ssqItem = this.ssq.find(o=>o.Name==this.data.XMSSQ);
+                        return ssqItem.County;
+                    }
+                },
+                methods:{
+                    add(){
+                        this.type = 1;
+                    },
+                    save(){
+
+                    },
+                    cancle(){
+                        this.type = 2;
+                    }
+                },
                 mounted(){
                     var map = new AMap.Map('amap',{
                         center:[121.487899486, 31.249161717],

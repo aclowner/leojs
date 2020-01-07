@@ -120,6 +120,9 @@
                 }
             },
             methods:{
+                reset(){
+                    this.checked = this.list.treeToList().map(o=>o.id).toObject(2);
+                }
             },
             watch:{
                 checked:{                    

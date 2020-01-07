@@ -113,7 +113,7 @@
                             <row name="职务描述："><textarea v-model="data.Remark"></textarea></row>
                         </div>
                         <div class="ed-bottom">
-                            <tree-check :list="limits" :checks="checkedObj"></tree-check>                                
+                            <tree-check :list="limits" :checks="checkedObj" ref="treeCheck"></tree-check>                                
                         </div>
                     </div>
 
@@ -127,7 +127,7 @@
                             <div class="detail-tab"><tab-btns :list="tabs" :active.sync="detailTab"></tab-btns></div>                            
                         </div>
                         <div class="ed-bottom">
-                            <tree-check :list="detailTree" :checks="checkedObj" :checkbox="false" v-show="detailTab==1"></tree-check>   
+                            <tree-check :list="detailTree" :checkbox="false" v-show="detailTab==1"></tree-check>   
                             <div class="table-nopp users" v-show="detailTab==2">
                                 <div class="thead-tr">
                                     <span>序号</span><span>姓名</span><span>部门</span>
@@ -223,8 +223,12 @@
                 cancle(){
                     let acon = this.active ? "确定取消编辑的内容？" : "确定取消添加的内容？";
                     this.$refs.popup.confirm(acon,(ot)=>{
-                        if(ot=="确定"&&this.active)
-                            this.edit = false;
+                        if(ot=="确定"){
+                            if(this.active)
+                                this.edit = false;
+                            else
+                                this.$refs.treeCheck.reset();
+                        }
                     });
                 },
                 getPars(da,id,re){
@@ -239,7 +243,7 @@
                     if(item.pid)
                         this.getPars(da,item.pid,re);
                     return re;
-                }
+                },                
             },
             watch:{
                 active(nv){

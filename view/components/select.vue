@@ -76,7 +76,9 @@
                 <template v-else>
                     <template v-if="liType==1"><li v-for="li in list"  :class="{active:li[lid]==val}" @click="liClick(li[lid])">{{li[lname]}}</li></template>
                     <template v-else-if="liType==2"><li v-for="li in list"  :class="{active:li==val}" @click="liClick(li)">{{li}}</li></template>
-                    <template v-else><li v-for="(li,i) in list" :class="{active:i==parseInt(val)}" @click="liClick(i)">{{li}}</li></template>
+                    <template v-else-if="liType==3"><li v-for="(li,i) in list" :class="{active:i==parseInt(val)}" @click="liClick(i)">{{li}}</li></template>
+                    <template v-else-if="liType==4"><li v-for="(li,i) in list" :class="{active:i==parseInt(val)-1}" @click="liClick(i+1)">{{li}}</li></template>
+                    <template v-else><li v-for="li in list"  :class="{active:li[lname]==val}" @click="liClick(li[lname])">{{li[lname]}}</li></template>
                 </template>
             </ul></div>
         </div>
@@ -108,13 +110,13 @@
                     if(this.val!=undefined &&sv.length>0&&this.list&&this.list.length>0){
                         if(this.liType==1)
                             rt = this.list.find(o=>o[this.lid]==this.val)?this.list.find(o=>o[this.lid]==this.val)[this.lname]:"";
-                        else if(this.liType==2)
+                        else if(this.liType==2||this.liType==5)
                             rt = this.val;
-                        else
+                        else if(this.liType==3)
                             rt = this.list[this.val];
+                        else
+                            rt = this.list[this.val-1];
                     }
-                    if(this.placeholder && rt)
-                        rt = this.placeholder + " - " + rt;
                     return rt;
                 }
             },
