@@ -78,7 +78,7 @@ svg{height: 100%;width: 100%;}
 }
 
 /* scroll ---- start */
-._scroll{position: relative;overflow: hidden;height: 100%;}
+._scroll{position: relative;overflow: hidden;height: 100%;pointer-events: auto;}
 
 ._scroll>._con{height: 100%;overflow: hidden;}
 

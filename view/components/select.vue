@@ -15,7 +15,7 @@
         background: var(--select-bg);
         z-index: 9;
     }
-    .sel-list ._con{
+    .sel-list>._con{
         display: block;
         padding: 2px;
         overflow: hidden;

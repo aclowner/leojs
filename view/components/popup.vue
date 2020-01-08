@@ -83,8 +83,8 @@
                     this.alertCall = fn;
                 },
                 alertBtnEvent(ot){
-                    console.log(ot);
-                    this.alertCall(ot);
+                    if(this.alertCall)
+                        this.alertCall(ot);
                     this.alertOpen = false;
                 },
                 child(pp,param){  //调用子组件函数，data
