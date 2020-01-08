@@ -5,7 +5,7 @@
         height: 100%;
         position: relative;
     }
-    .a_marker{
+    .a_marker, .map_marker{
         width: 22px;
         height: 32px;
         background: url("../image/amap-icon.png");
@@ -13,9 +13,29 @@
         line-height: 22px;
         color: #fff;
     }    
-    .active .a_marker {
+    .map_marker{
+        position: relative;
+    }
+    .map_marker>span{
+        position: absolute;
+        padding: 0 14px;
+        background: var(--blue);
+        border-radius: 3px;
+        bottom: 35px;
+        left: 50%;
+        transform: translateX(-50%);
+        color: #fff;
+        font-size: 12px;
+        display: none;
+        white-space: nowrap;
+    }
+    .active .a_marker, .map_marker.active{
         background-position: -22px 0;
     }
+    .map_marker.active>span{
+        display: block;
+    }
+
     .pro-search, .lists{
         position: absolute;
         left: 20px;
@@ -26,7 +46,8 @@
         width: 420px;
         background: #fff;
         display: flex;
-        align-items: center
+        align-items: center;
+        box-shadow: 0 1px 4px 1px rgba(0,0,0,0.2);
     }
     .lists{                
         width: 360px;
@@ -275,19 +296,16 @@ function page3(){
                         this.layer.remove(this.labelMarker); 
 
                     console.log(mi);
-                    var markerContent = document.createElement("div");
-                    var markerIcon = document.createElement("div");
-                    markerIcon.className = 'a_marker active';
-                    markerIcon.innerHTML = (i+1);
-                    markerContent.appendChild(markerIcon);
-                    marker.setContent(markerContent); //更新点标记内容
                     this.map.setCenter([mi.Lng,mi.Lat]);
 
-                    let lm = {"name":mi.XMMC,"position":[mi.Lng,mi.Lat],"text":{"content":mi.XMMC,"direction":"top","offset":[0,-40],"style":{"fontSize":12,"fillColor":"#fff","padding":[3,10,3,10],"backgroundColor":"#3981e3","border-radius":5}},"extData":{"index":0}};
-                                       
-                    this.labelMarker = new AMap.LabelMarker(lm);
-                    this.layer.add(this.labelMarker);
-                    
+                    let elems = document.querySelectorAll(".map_marker");
+                    for(let i=0;i<elems.length;i++){
+                        let el = elems[i];
+                        if(el.getAttribute("did")==mi.Id)
+                            el.classList.add("active");
+                        else
+                            el.classList.remove("active");
+                    }
                 }   
             }
         },
@@ -300,14 +318,7 @@ function page3(){
             this.map.setMapStyle('amap://styles/c8e398d02d6a946431e38b3bc2906ecc');  
             this.map.on('complete', ()=>{
                 // 地图图块加载完成后触发
-                this.list = NS.Load("../resource/project.json");   
-                this.layer = new AMap.LabelsLayer({
-                    zooms: [3, 20],
-                    zIndex: 1000,
-                    collision: true,
-                    animation: true,
-                });                     
-                this.map.add(this.layer);
+                this.list = NS.Load("../resource/project.json"); 
             });                   
         },
         watch:{
@@ -319,7 +330,7 @@ function page3(){
                     let marker = new AMap.Marker({
                         position: [item.Lng, item.Lat],   // 经纬度对象，也可以是经纬度构成的一维数组[116.39, 39.9]
                         offset: new AMap.Pixel(-11, -32),
-                        content: '<div class="a_marker">'+(i+1)+'</div>',
+                        content: "<div class='map_marker' did="+item.Id+">"+(i+1)+"<span>"+item.XMMC+"</span></div>",
                     });
                     this.markers.push(marker);                    
                 };
