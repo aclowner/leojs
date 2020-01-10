@@ -11,13 +11,13 @@
  */
 
 //网络请求路径
-const _console = {
-    debug: true,
-    start: "color:#fff;line-height:32px;padding:0 15px;border-radius:3px;font-size:16px;letter-spacing:5px;font-family:微软雅黑;font-weight:bold;background:linear-gradient(to right bottom, #8876f9, #7685f8)",
-    log: "color:#00baff;font-size:14px;",
-    warn: "color:#f0a92c;font-size:14px;",
-    error: "color:#ff0000;font-weight:bold;font-size:16px;",
-},
+const  _console = {
+        debug: true,
+        start: "color:#fff;line-height:32px;padding:0 15px;border-radius:3px;font-size:16px;letter-spacing:5px;font-family:微软雅黑;font-weight:bold;background:linear-gradient(to right bottom, #8876f9, #7685f8)",
+        log: "color:#00baff;font-size:14px;",
+        warn: "color:#f0a92c;font-size:14px;",
+        error: "color:#ff0000;font-weight:bold;font-size:16px;",
+    },
     path = {
         api: "http://127.0.0.1:8088/",
     };

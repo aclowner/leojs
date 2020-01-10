@@ -20,6 +20,7 @@
             </row>
             <row name="部门"><input type="text" @click="dept" v-model="data.Dept"></row>
             <row name="职务"><leo-select :value.sync="data.JobId" :list="jobs"></leo-select></row>
+            <row name="邮箱"><input type="text" @click="dept" v-model="data.Email"></row>
            
             <row class="form-btn"><button class="btn blue" @click="save">确定</button>&nbsp;&nbsp;<button @click="close" class="btn" >取消</button></row>   
         </div>

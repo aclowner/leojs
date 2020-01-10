@@ -77,19 +77,20 @@
     </template>
     <script>
         function treeItem() {
-            this.name = "tree-item";
+            this.name = "tree-item";                    //组件名，在组件中调用自己，需要声明该属性
             this.props = {
-                item: { default: null },   //当前数据
-                open: { default: false },  //自己是否打开
-                level: { default: 1 },  //层级数量 1开始
-                active: { default: 0 }   //选中项Id
+                item: { default: null },                //当前数据
+                open: { default: false },               //自己是否打开
+                level: { default: 1 },                  //层级数量 1开始
+                active: { default: 0 }                  //选中项Id
             };
             this.data = function () {
                 return {
-                    openI: this.open
+                    openI: this.open                    //自己是否打开
                 }
             };
             this.methods = {
+                //项点击
                 itemClick(item, level = this.level) {
                     this.$emit('change', item, level);
                 }

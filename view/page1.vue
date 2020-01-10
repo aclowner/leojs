@@ -48,14 +48,12 @@
           <div class="search">
             <input type="text" v-model="filter" />
           </div>
-          <div class="btns"></div>
         </div>
         <div class="tables">
           <leo-table :list="listFilter" @change="(da)=>{listShow = da}" class="table-pro-manage">
             <div class="tr" slot="thead">
               <span v-for="(v,k,i) in tableKeys" :class="'td-'+k">
-                <a class="checkbox" v-if="i==0"></a>
-                {{v}}
+                <a class="checkbox" v-if="i==0"></a>{{v}}
               </span>
             </div>
             <div class="tr" slot="tbody" v-for="(tr,index) in listShow" :key="index">
@@ -90,13 +88,7 @@ function page1() {
     data: function() {
       return {
         dept: NS.Load("../resource/dept.json"),
-        tableKeys: {
-          Name: "姓名",
-          Sex: "性别",
-          Dept: "部门",
-          Job: "职务",
-          Ope: "操作"
-        },
+        tableKeys: {Name: "姓名",  Sex: "性别",  Dept: "部门",  Job: "职务",  Ope: "操作"},
         list: NS.Load("../resource/user.json"),
         listShow: [],
         active: {},
@@ -121,10 +113,7 @@ function page1() {
         console.log(this.allIds);
         if (this.allIds.length == 0)
           return this.list.filter(o => o.Name.indexOf(this.filter) >= 0);
-        return this.list.filter(
-          o =>
-            this.allIds.includes(o.DeptId) && o.Name.indexOf(this.filter) >= 0
-        );
+        return this.list.filter(o =>  this.allIds.includes(o.DeptId) && o.Name.indexOf(this.filter) >= 0);
       }
     },
     created() {},

@@ -352,19 +352,19 @@
 function date(){
     Object.assign(this,{
         name:"leo-date",
-        props:{
+        props:{            
+            'value':{default:""},           //选中值 sync传入，update修改
+            'type':{default:1},             //1:年月日 2:年月 3:年 4:时分 5:年月日时分
             'name':{default:""},
-            'value':{default:""},
-            'type':{default:1},  //1:年月日 2:年月 3:年 4:时分 5:年月日时分
         },
         data(){
                 return{
                     val:this.value,
                     show:false,
                     evTag:"",
-                    week:["日","一","二","三","四","五","六"],  //星期显示
+                    week:["日","一","二","三","四","五","六"],              //星期显示
                     monthArr:["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月"],  //月份显示
-                    active:parseInt(this.type==5?1:this.type),      //1:选择天 2:选择月 3:选择年 4:选择10年 5:选择天（时分） 6:选择时分
+                    active:parseInt(this.type==5?1:this.type),             //1:选择天 2:选择月 3:选择年 4:选择10年 5:选择天（时分） 6:选择时分
                     year:0,
                     month:0,
                     day:0,

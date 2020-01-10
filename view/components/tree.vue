@@ -14,8 +14,8 @@
         function tree() {
             Object.assign(this, {
                 props: {
-                    list: Array,  //树结构数据 子级字段:child,
-                    value:{default:0}
+                    list: Array,                //树结构数据 子级字段:child,
+                    value:{default:0}           //选择项
                 },
                 data() {
                     return {

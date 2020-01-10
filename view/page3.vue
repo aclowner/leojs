@@ -181,9 +181,9 @@
                 <row name="项目负责人："><input type="text" v-model="data.XMJC"></row>
                 <row name="项目所属区域：">
                     <div class="flex">
-                        <div class="col4 "><leo-select placeholder="省" li-type="5" :list="sss" :value.sync="data.XMSSS" @change="()=>{data.XMSSQ='';data.XMSSX='';}"></leo-select></div>
-                        <div class="col4 ssq"><leo-select placeholder="市" li-type="5" :list="ssq" :value.sync="data.XMSSQ" @change="()=>{data.XMSSX='';}"></leo-select></div>
-                        <div class="col4 "><leo-select placeholder="区县" li-type="5" :list="ssx" :value.sync="data.XMSSX"></leo-select></div>                            
+                        <div class="col4 "><leo-select placeholder="省" type="2" :list="sss" :value.sync="data.XMSSS" @change="()=>{data.XMSSQ='';data.XMSSX='';}"></leo-select></div>
+                        <div class="col4 ssq"><leo-select placeholder="市" type="2" :list="ssq" :value.sync="data.XMSSQ" @change="()=>{data.XMSSX='';}"></leo-select></div>
+                        <div class="col4 "><leo-select placeholder="区县" type="2" :list="ssx" :value.sync="data.XMSSX"></leo-select></div>                            
                     </div>
                 </row>
                 <row name="具体地址：">

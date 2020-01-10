@@ -53,34 +53,42 @@ function inputFilter(){
         props:["value","filters"],
         data(){
             return {                
-                flShow:false,
-                inputVal:this.value,
-                ivWatch:true,  //是否进行inputVal监听 点击选中、父级改值，不触发监听，手动输入触发监听
-                listUp:true,   //输入框失去焦点时，下拉框是否收起  用于滚动下拉选择，不收起下拉框
+                flShow:false,               //筛选选择是否打开
+                inputVal:this.value,        //输入框值
+                ivWatch:true,               //是否进行inputVal监听 点击选中、父级改值，不触发监听，手动输入触发监听
+                listUp:true,                //输入框失去焦点时，下拉框是否收起  用于滚动下拉选择，不收起下拉框
             }
         },
         methods:{
             inputBlur(){
+                //判断输入框失去焦点时，下拉框是否收起
                 if(this.listUp)
                     this.flShow = false;
             },
             fiClick(fi){
+                //下拉选择点击，不触发值改变监听
                 this.ivWatch = false;
                 this.inputVal = fi.Name;
+                //发出点击事件
                 this.$emit("fclick",fi);
+                //更新选择值
                 this.$emit("update:value",fi.Name)
                 this.flShow = false;
             }
         },
         watch:{
             inputVal(nv){
+                //输入框值改变监听
+                //如果为筛选选项点击引起的值改变，不做处理
                 if(!this.ivWatch){
                     this.ivWatch = true;
                     return;
                 }                    
+                //主动筛选发出change事件给父级，父级通过传入的值做数据处理
                 this.$emit("change",nv);
             },
-            filters(nv){
+            filters(nv){  
+                //筛选选择项为空时，关闭选择下拉，反之打开              
                 this.flShow = nv.length>0;
             }
         }

@@ -32,11 +32,12 @@
     function alert(){
         Object.assign(this,{
             props:{
-                btns:{default(){return [["确定","blue mr"],["取消",""]]}},
-                con:{default:"提示信息！"}                
+                btns:{default(){return [["确定","blue mr"],["取消",""]]}},      //alert confrom选择按钮 
+                con:{default:"提示信息！"}                                      //提示内容信息
             },
             methods:{
                 alertBtn(ot){
+                    //alert confrim按钮点击事件，由popup发送到父级页面
                     this.$parent.$parent.alertBtnEvent(ot);
                 }
             }
