@@ -37,7 +37,7 @@ function webgl(){
                 this.mixers = [];
 
                 this.camera = new THREE.PerspectiveCamera(45,this.size.width/this.size.height,1,3000);
-                this.camera.position.set(0,300,1300);
+                this.camera.position.set(0,300,1500);
 
                 this.controls = new THREE.OrbitControls(this.camera);
                 this.controls.target.set( 0, 100, 0 );
@@ -48,11 +48,11 @@ function webgl(){
                 // this.scene.fog = new THREE.Fog( 0xa0a0a0, 200, 1000 );
 
                 this.light = new THREE.HemisphereLight( 0xffffff, 0x444444 );
-                this.light.position.set( 0, 200, 0 );
+                this.light.position.set( 0, 400, 0 );
                 this.scene.add( this.light );
 
                 this.light = new THREE.DirectionalLight( 0xffffff );
-                this.light.position.set( 0, 200, 100 );
+                this.light.position.set( 0, 400, 100 );
                 this.light.castShadow = true;
                 this.light.shadow.camera.top = 180;
                 this.light.shadow.camera.bottom = -100;
@@ -71,7 +71,7 @@ function webgl(){
                 this.scene.add( grid );
 
                 var loader = new THREE.FBXLoader();
-                loader.load( '../../resource/2.FBX', ( object )=>{
+                loader.load( '../../resource/fbx/bgs.fbx', ( object )=>{
                     object.mixer = new THREE.AnimationMixer( object );
                     this.mixers.push( object.mixer );
 

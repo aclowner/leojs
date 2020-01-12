@@ -14,7 +14,7 @@ function page5(){
     Object.assign(this,{
         data(){
             return {
-                model:"../../resource/2.FBX"
+                model:"../../resource/fbx/bgs.fbx"
             }
         }
     })
