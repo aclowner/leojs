@@ -32,7 +32,7 @@
             </scroll>
             </div>
 
-            <row class="form-btn"><button class="btn blue" @click="save">确定</button>&nbsp;&nbsp;<button @click="cancle" class="btn" >取消</button></row>   
+            <form-row class="form-btn"><button class="btn blue" @click="save">确定</button>&nbsp;&nbsp;<button @click="cancle" class="btn" >取消</button></form-row>   
         </div>
     </template>
     <script>

@@ -46,10 +46,10 @@
         border-right-color: var(--input-active-color);
         background: #ebf2fc;
     }
-    .job-edit .row>.key{
+    .job-edit .form-row>.key{
         width: 138px;
     }
-    .job-edit .row>.val{
+    .job-edit .form-row>.val{
         padding-right: 30px;
     }
     .ed-top{
@@ -109,8 +109,8 @@
 
                     <div class="edit-panel flex-column" v-show="edit">
                         <div class="ed-top">
-                            <row name="职务名称："><input type="text" v-model="data.Name"></row>
-                            <row name="职务描述："><textarea v-model="data.Remark"></textarea></row>
+                            <form-row name="职务名称："><input type="text" v-model="data.Name"></form-row>
+                            <form-row name="职务描述："><textarea v-model="data.Remark"></textarea></form-row>
                         </div>
                         <div class="ed-bottom">
                             <tree-check :list="limits" :checks="checkedObj" ref="treeCheck"></tree-check>                                
@@ -120,10 +120,10 @@
                     <div class="detail-panel flex-column" v-show="!edit">
                         <div class="ed-top">
                             <div class="flex">
-                                <row name="职务名称:" style="width:380px;">{{data.Name}}</row>
-                                <row name="人数统计:"> {{usersOfJob.length}}</row>
+                                <form-row name="职务名称:" style="width:380px;">{{data.Name}}</form-row>
+                                <form-row name="人数统计:"> {{usersOfJob.length}}</form-row>
                             </div>
-                            <row name="职务描述:">{{data.Remark||"--"}}</row>
+                            <form-row name="职务描述:">{{data.Remark||"--"}}</form-row>
                             <div class="detail-tab"><tab-btns :list="tabs" :active.sync="detailTab"></tab-btns></div>                            
                         </div>
                         <div class="ed-bottom">

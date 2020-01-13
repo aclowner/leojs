@@ -381,15 +381,18 @@ Vue.component("scroll", {
             </div>
         </div>`
 });
+Vue.component("loading",{
+    template: `<div class="loading"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>`
+})
 //
 Vue.component("page-tag", {
     props: ["tags"],
     template: `<div class="tag"><i :class="['icon','i-'+tags[1]]"></i><span>{{tags[0]}}</span></div>`,
 });
 //行
-Vue.component("row", {
+Vue.component("form-row", {
     props: ["name"],
-    template: `<div class="row">
+    template: `<div class="form-row">
             <div class="key" v-if="name">{{name==0?"":name}}</div>
             <div class="val"><slot></slot></div>
         </div>`,

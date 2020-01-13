@@ -135,8 +135,9 @@
         margin: 0 40px;
     }
 </style>
-<template>
+<template>    
     <div class="page flex-column">
+        <loading v-if="loaded==false"></loading>
     <div class="title flex">
         <span>{{$route.params.title}}</span>
         <div class="ope">
@@ -172,26 +173,26 @@
         </div> 
         <scroll v-show="type==1">
             <div class="pro-add">
-                <row name="项目名称：" class="must"><input type="text" v-model="data.XMMC"></row>
-                <row name="项目简称：" ><input type="text" v-model="data.XMJC"></row>
+                <form-row name="项目名称：" class="must"><input type="text" v-model="data.XMMC"></form-row>
+                <form-row name="项目简称：" ><input type="text" v-model="data.XMJC"></form-row>
                 <div class="flex">
-                    <div class="col6"><row name="开始日期：" ><leo-date :value="data.KSRQ"></leo-date></row></div>
-                    <div class="col6"><row name="结束日期：" ><leo-date :value="data.JSRQ"></leo-date></row></div>
+                    <div class="col6"><form-row name="开始日期：" ><leo-date :value="data.KSRQ"></leo-date></form-row></div>
+                    <div class="col6"><form-row name="结束日期：" ><leo-date :value="data.JSRQ"></leo-date></form-row></div>
                 </div>
-                <row name="项目负责人："><input type="text" v-model="data.XMJC"></row>
-                <row name="项目所属区域：">
+                <form-row name="项目负责人："><input type="text" v-model="data.XMJC"></form-row>
+                <form-row name="项目所属区域：">
                     <div class="flex">
                         <div class="col4 "><leo-select placeholder="省" type="2" :list="sss" :value.sync="data.XMSSS" @change="()=>{data.XMSSQ='';data.XMSSX='';}"></leo-select></div>
                         <div class="col4 ssq"><leo-select placeholder="市" type="2" :list="ssq" :value.sync="data.XMSSQ" @change="()=>{data.XMSSX='';}"></leo-select></div>
                         <div class="col4 "><leo-select placeholder="区县" type="2" :list="ssx" :value.sync="data.XMSSX"></leo-select></div>                            
                     </div>
-                </row>
-                <row name="具体地址：">
+                </form-row>
+                <form-row name="具体地址：">
                     <input-filter @change="addressFilter" :value.sync="data.JTDZ" :filters="addressSels" @fclick="addressClick"></input-filter>
-                </row>
-                <row name="项目描述：">
+                </form-row>
+                <form-row name="项目描述：">
                     <textarea v-model="data.XMMS" ></textarea>
-                </row>
+                </form-row>
             </div>                    
         </scroll>               
     </div>
@@ -206,6 +207,7 @@ function page3(){
     Object.assign(this,{
         data(){
             return {
+                loaded:false,
                 list:[],
                 type:2,
                 data:JSON.parse(JSON.stringify(editObj)),
@@ -319,6 +321,7 @@ function page3(){
             this.map.on('complete', ()=>{
                 // 地图图块加载完成后触发
                 this.list = NS.Load("../resource/project.json"); 
+                this.loaded = true;
             });                   
         },
         watch:{

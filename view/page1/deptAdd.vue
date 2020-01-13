@@ -3,11 +3,11 @@
     </style>
     <template>
         <div class="form">
-            <row name="名称"><input type="text" v-model="data.Name"></row>
-            <row name="所属父级"><input type="text" @click="dept" v-model="data.Pname"></row>
-            <row name="部门描述"><textarea v-model="data.Remark"></textarea></row>
+            <form-row name="名称"><input type="text" v-model="data.Name"></form-row>
+            <form-row name="所属父级"><input type="text" @click="dept" v-model="data.Pname"></form-row>
+            <form-row name="部门描述"><textarea v-model="data.Remark"></textarea></form-row>
 
-            <row class="form-btn"><button class="btn blue" @click="save">确定</button>&nbsp;&nbsp;<button @click="close" class="btn" >取消</button></row>  
+            <form-row class="form-btn"><button class="btn blue" @click="save">确定</button>&nbsp;&nbsp;<button @click="close" class="btn" >取消</button></form-row>  
         </div>
     </template>
     <script>

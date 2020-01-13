@@ -95,8 +95,9 @@ svg{height: 100%;width: 100%;}
     width: 64px;
     height: 64px;
     left: 50%;
-    top: 100px;
-    margin-left: -32px;
+    top: 50%;
+    margin-top: -100px;
+    z-index: 99;
 }
 .loading > span {
     position: absolute;
@@ -167,29 +168,29 @@ svg{height: 100%;width: 100%;}
 /* loading ---- End */
 
 /* row ---- start */
-.row{
+.form-row{
 	min-height: 60px;
 	padding: 10px 0;
 	display: flex;
 	line-height: 40px;
 }
-.row>.key{
+.form-row>.key{
 	width: 246px;
 	text-align: right;
     padding-right: 18px;
     color: var(--row-key-color);
 }
-.row>.val{
+.form-row>.val{
 	flex: 1;   
 }
-.row.must>.key:before{
+.form-row.must>.key:before{
     content: "*";
     color: #ff6d4b;
 }
 .vdf>.val{
     display: flex;
 }
-.row.smk>.key{
+.form-row.smk>.key{
     width: unset;
     padding: 0 14px 0 20px;
 }
@@ -197,20 +198,20 @@ svg{height: 100%;width: 100%;}
 .vdf>.val input{
     width: 262px;
 }
-.popup .row>.key{
+.popup .form-row>.key{
     width: 258px;
     color: var(--popup-color);
 }
-.popup .row>.val{
+.popup .form-row>.val{
     padding-right: 190px;
 }
-.popup .row.vrs>.val{  
+.popup .form-row.vrs>.val{  
     padding-right: 140px;
 }
-.popup .row.form-btn{
+.popup .form-row.form-btn{
     margin-top: 10px;
 }
-.popup .row.form-btn .val{
+.popup .form-row.form-btn .val{
     display: flex;
     justify-content: flex-end;
     padding-right: 20px;
